@@ -1,20 +1,60 @@
-// EstructurasDeDatos.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+﻿#include "Input.h"
+#include "Stack.h"
+#include "Queue.h"
+#include "LinkList.h"
 
-#include <iostream>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+/*
+*   Enunciado: Desarrollar un Stack y un Queue con prioridad utilizando punteros
+*
+*   Participantes
+    Leonardo Perozo - 1116588
+    Jos� Ram�rez - 1115411
+    Radhames Ventura - 1116252
+    Juan Lopera -  1116184
+    Mario Senra - 1116742
+    Manuel Pucheu - 1115846
+    �ngel Soriano - 1107555
+
+    Fecha de entrega:
+    8/24/2023
+*/
+
+
+int main() {
+
+    int userSelection;
+    bool exitProgram = false;
+
+    while (!exitProgram) {
+        cout << "DEMO: Estructuras de Datos - Stack y Queue\n\nIngrese la opcion que desea ejecutar:\n"
+            "1. Ejecutar Demo Stack\n"<<
+            "2. Ejecutar Demo Queue\n"<< 
+            "3. Ejecutar Demo lista simplemente enlazada\n"<<
+            "4. Salir del programa.\n";
+        userSelection = recieveValidInput(1, 4);
+        system("cls");
+
+        switch (userSelection)
+        {
+        case 1:
+            ExecuteStackProgram();
+            break;
+        case 2:
+            ExecuteQueueProgram();
+            break;
+        case 3:
+            EjecutarProgramaLinkedList();
+            break;
+        case 4:
+            exitProgram = true;
+        default:
+            break;
+        }
+    }
+
+
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
