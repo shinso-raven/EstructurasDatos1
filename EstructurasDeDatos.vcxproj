@@ -130,6 +130,7 @@
     <ClCompile Include="EstructurasDeDatos.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="binaryTree.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="LinkList.h" />
     <ClInclude Include="Queue.h" />
