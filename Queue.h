@@ -1,6 +1,22 @@
-﻿using namespace std;
+﻿/*
+*   Enunciado: Desarrollar un Queue con prioridad utilizando punteros
+*				Funcionalidades: Enqueue (con prioridad), dequeue y desplegar
+*
+*   Participantes
+	Leonardo Perozo - 1116588
+	Jos� Ram�rez - 1115411
+	Radhames Ventura - 1116252
+	Juan Lopera -  1116184
+	Mario Senra - 1116742
+	Manuel Pucheu - 1115846
+	�ngel Soriano - 1107555
 
-#pragma region Queue
+	Fecha de entrega:
+	9/8/2023
+*/
+
+using namespace std;
+
 struct Nodo
 {
 	int dato;
@@ -106,10 +122,10 @@ void Desplegar(Nodo*& frente) {
 	cout << "Elementos en la cola: \n  FIRST | ";
 
 	while (aux->siguiente != nullptr) {
-		cout << aux->dato << " (Prioridad " << aux->prioridad << ")\n        | ";
+		cout << aux->dato << "\n        | ";
 		aux = aux->siguiente;
 	}
-	cout << aux->dato << " (Prioridad " << aux->prioridad << ") | LAST\n";
+	cout << aux->dato << " | LAST\n";
 
 
 
@@ -172,5 +188,4 @@ void ExecuteQueueProgram() {
 
 	}
 }
-#pragma endregion
 

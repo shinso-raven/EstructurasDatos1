@@ -1,3 +1,20 @@
+﻿/*
+*   Enunciado: Desarrollar un Stack utilizando punteros
+*              Funcionalidades: Push, pop, desplegar y vaciar
+*
+*   Participantes
+    Leonardo Perozo - 1116588
+    Jos� Ram�rez - 1115411
+    Radhames Ventura - 1116252
+    Juan Lopera -  1116184
+    Mario Senra - 1116742
+    Manuel Pucheu - 1115846
+    �ngel Soriano - 1107555
+
+    Fecha de entrega:
+    9/8/2023
+*/
+
 using namespace std;
 
 struct Node {

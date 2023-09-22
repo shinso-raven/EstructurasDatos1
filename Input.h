@@ -1,6 +1,11 @@
-#include <iostream>
+﻿#include <iostream>
 
 using namespace std;
+
+/*
+* Funci�n RecieveValidInput
+* Modulo para ser reutilizado en todos los programas
+*/
 
 int recieveValidInput(int minNumber, int maxNumber) {
     int num;

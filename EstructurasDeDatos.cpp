@@ -6,7 +6,9 @@
 using namespace std;
 
 /*
-*   Enunciado: Desarrollar un Stack y un Queue con prioridad utilizando punteros
+*   Enunciado: Desarrollar un Stack utilizando punteros
+*              Desarrollar un Queue con prioridad utilizando punteros
+*              Desarrollar una Linked List simplemente enlazada utilizando punteros
 *
 *   Participantes
     Leonardo Perozo - 1116588
@@ -18,7 +20,7 @@ using namespace std;
     �ngel Soriano - 1107555
 
     Fecha de entrega:
-    8/24/2023
+    9/8/2023
 */
 
 
@@ -28,11 +30,8 @@ int main() {
     bool exitProgram = false;
 
     while (!exitProgram) {
-        cout << "DEMO: Estructuras de Datos - Stack y Queue\n\nIngrese la opcion que desea ejecutar:\n"
-            "1. Ejecutar Demo Stack\n"<<
-            "2. Ejecutar Demo Queue\n"<< 
-            "3. Ejecutar Demo lista simplemente enlazada\n"<<
-            "4. Salir del programa.\n";
+        cout << "DEMO: Estructuras de Datos - Stack, Queue y Linked List\n\nIngrese la opcion que desea ejecutar:\n"
+            "1. Ejecutar Demo Stack\n2. Ejecutar Demo Queue\n3. Ejecutar Demo lista simplemente enlazada\n4. Salir del programa.\n";
         userSelection = recieveValidInput(1, 4);
         system("cls");
 

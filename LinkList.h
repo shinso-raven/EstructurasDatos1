@@ -1,18 +1,33 @@
-#pragma once
+﻿/*
+*   Enunciado: Desarrollar una Linked List simplemente enlazada utilizando punteros
+*               La lista debe de estar ordenada de manera ascendente
+*               Funcionalidades: Insertar, eliminar, buscar, desplegar y vaciar
+*
+*   Participantes
+    Leonardo Perozo - 1116588
+    Jos� Ram�rez - 1115411
+    Radhames Ventura - 1116252
+    Juan Lopera -  1116184
+    Mario Senra - 1116742
+    Manuel Pucheu - 1115846
+    �ngel Soriano - 1107555
+
+    Fecha de entrega:
+    9/8/2023
+*/
+
 using namespace std;
 
-
-
-struct NodoB {
+struct NodoLinkedList {
     int dato;
-    NodoB* siguiente;
+    NodoLinkedList* siguiente;
 };
 
-void InsertarLista(NodoB*& first, NodoB*& last) {
+void InsertarLista(NodoLinkedList*& first, NodoLinkedList*& last) {
     int n;
-    NodoB* nuevo_nodo = new NodoB();
-    NodoB* aux1;
-    NodoB* previo_nodo;
+    NodoLinkedList* nuevo_nodo = new NodoLinkedList();
+    NodoLinkedList* aux1;
+    NodoLinkedList* previo_nodo;
 
     cout << "Digite un numero: ";
     n = recieveValidInput(0, INT_MAX);
@@ -48,22 +63,22 @@ void InsertarLista(NodoB*& first, NodoB*& last) {
     cout << "Elemento " << n << " insertado correctamente" << endl;
 }
 
-void MostrarElemento(NodoB*& first) {
-    NodoB* actual = first;
+void MostrarElemento(NodoLinkedList*& first) {
+    NodoLinkedList* actual = first;
 
 
     while (actual != nullptr) {
         cout << actual->dato << "->";
         actual = actual->siguiente;
     }
-    cout << "vacio" << endl;
+    cout << "Vacio" << endl;
 }
 
-void BuscarNodo(NodoB*& first) {
+void BuscarNodo(NodoLinkedList*& first) {
     int n;
 
     bool elementoEncontrado = false;
-    NodoB* actual = new NodoB();
+    NodoLinkedList* actual = new NodoLinkedList();
     actual = first;
 
     cout << "Inserte el numero que desea buscar: \n";
@@ -77,18 +92,18 @@ void BuscarNodo(NodoB*& first) {
     }
 
     if (elementoEncontrado) {
-        cout << "Elemento " << n << " encontrado en la lista";
+        cout << "Elemento " << n << " encontrado en la lista \n";
 
     }
     else {
-        cout << "El elemento " << n << " no existe en la lista";
+        cout << "El elemento " << n << " no existe en la lista \n";
     }
 }
 
-void EliminarNodo(NodoB*& first, NodoB*& last) {
+void EliminarNodo(NodoLinkedList*& first, NodoLinkedList*& last) {
     int n;
-    NodoB* actual;
-    NodoB* aux;
+    NodoLinkedList* actual;
+    NodoLinkedList* aux;
 
     bool elementoEncontrado = false;
     bool respuestaEncontrada = false;
@@ -100,17 +115,25 @@ void EliminarNodo(NodoB*& first, NodoB*& last) {
     n = recieveValidInput(0, INT_MAX);
 
     while (!respuestaEncontrada) {
-        if (actual == NULL) { // elemento no existe, pero menor a elementos 
+        if (actual == NULL) { // Elemento no existe, pero menor a elementos 
             respuestaEncontrada = true;
         }
         else {
-            if (actual->dato > n) {// elemento no existe y mayor a todo
+            if (actual->dato > n) {// Elemento no existe y mayor a todo
                 respuestaEncontrada = true;
             }
 
-            if (actual->dato == n) { // elemento encontrado
+            if (actual->dato == n) { // Elemento encontrado
                 elementoEncontrado = true;
                 respuestaEncontrada = true;
+                if (actual == first) {
+                    first = actual->siguiente;
+                }
+
+                if (actual == last) {
+                    last = aux;
+                }
+
                 aux->siguiente = actual->siguiente;
             }
             else {
@@ -122,18 +145,20 @@ void EliminarNodo(NodoB*& first, NodoB*& last) {
 
     }
 
+
+
     if (elementoEncontrado) {
-        cout << "Elemento " << n << " eliminado correctamente";
+        cout << "Elemento " << n << " eliminado correctamente \n";
         delete actual;
     }
     else {
-        cout << "Elemento " << n << " no existe en la lista. Por lo tanto, no se puede eliminar.";
+        cout << "Elemento " << n << " no existe en la lista. Por lo tanto, no se puede eliminar. \n";
     }
 }
 
-void VaciarLista(NodoB*& first, NodoB*& last) {
-    NodoB* actual;
-    NodoB* aux;
+void VaciarLista(NodoLinkedList*& first, NodoLinkedList*& last) {
+    NodoLinkedList* actual;
+    NodoLinkedList* aux;
 
     actual = first;
     aux = nullptr;
@@ -149,6 +174,7 @@ void VaciarLista(NodoB*& first, NodoB*& last) {
 
     }
     last = first;
+
     if (first == nullptr && last == nullptr)
     {
         cout << "Lista vacia" << endl;
@@ -156,20 +182,20 @@ void VaciarLista(NodoB*& first, NodoB*& last) {
 }
 
 void EjecutarProgramaLinkedList() {
-    NodoB* first = nullptr;
-    NodoB* last = nullptr;
+    NodoLinkedList* first = nullptr;
+    NodoLinkedList* last = nullptr;
 
     int opcion, dato;
     const int salir = 6;
     do {
-        cout << "\n\t.:MENU:.\n"
+        cout << "\t.:MENU:.\n"
+            "Escoja una opcion del 1 al 6:\n "
             "\t1. Insertar datos en la lista\n"
             "\t2. Mostrar elementos de la lista\n"
             "\t3. Buscar nodo\n"
             "\t4. Eliminar nodo\n"
             "\t5. Vaciar lista\n"
-            "\t6. Salir\n"
-            "Escoja una opcion del 1 al 6: ";
+            "\t6. Salir\n";
 
         opcion = recieveValidInput(1, salir);
         system("cls");
