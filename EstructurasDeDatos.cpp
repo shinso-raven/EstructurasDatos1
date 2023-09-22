@@ -9,6 +9,7 @@ using namespace std;
 *   Enunciado: Desarrollar un Stack utilizando punteros
 *              Desarrollar un Queue con prioridad utilizando punteros
 *              Desarrollar una Linked List simplemente enlazada utilizando punteros
+*               xx
 *
 *   Participantes
     Leonardo Perozo - 1116588
