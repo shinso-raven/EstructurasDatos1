@@ -154,6 +154,10 @@ void EjecutarArbolBinario()
         }
     }
 }
+#pragma region Procesos del arbol
+
+
+
 
 Nodo* CrearNodo(int n, Nodo* padre) {
     Nodo* nuevo_nodo = new Nodo();
@@ -214,6 +218,7 @@ bool BuscarNodoEnArbol(Nodo* arbol, int valorBuscando) {  //Encontrar existencia
         return BuscarNodoEnArbol(arbol->derecha, valorBuscando);
     }
 }
+#pragma endregion
 
 #pragma region Eliminación de nodos en árbol
 
@@ -281,10 +286,13 @@ Nodo* EncontrarMinimo(Nodo* arbol) {
 //Determina el nodo que va a reemplazar el nodo a eliminar en caso de que se este eliminando un nodo con 1 o 0 hijos
 void ReemplazarNodo(Nodo* arbol, Nodo* reemplazo) {
     if (arbol->padre != NULL) {
-        if (arbol->padre->izquierda != NULL && arbol->dato == arbol->padre->izquierda->dato) {
+        bool arbolEsHijoIzquierdoDePadre = arbol->padre->izquierda != NULL && arbol->dato == arbol->padre->izquierda->dato;
+        bool arbolEsHijoDerechoDePadre = arbol->padre->derecha != NULL && arbol->dato == arbol->padre->derecha->dato;
+
+        if (arbolEsHijoIzquierdoDePadre) {
             arbol->padre->izquierda = reemplazo;
         }
-        else if (arbol->padre->derecha != NULL && arbol->dato == arbol->padre->derecha->dato) {
+        else if (arbolEsHijoDerechoDePadre) {
             arbol->padre->derecha = reemplazo;
         }
         if (reemplazo != NULL) {
@@ -296,7 +304,7 @@ void ReemplazarNodo(Nodo* arbol, Nodo* reemplazo) {
 //Elimina el nodo y configura un nuevo top en caso de que sea necesario
 void DestruirNodo(Nodo*& nodo, Nodo* reemplazo) {
     if (nodo == raiz) {
-        if (reemplazo != NULL) {
+        if (reemplazo != NULL) { //Cambiando un nodo para ser raiz
             raiz = reemplazo;
             reemplazo->padre = NULL;
         }
