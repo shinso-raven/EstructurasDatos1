@@ -7,7 +7,7 @@ using namespace std;
 * Modulo para ser reutilizado en todos los programas
 */
 
-int recieveValidInput(int minNumber, int maxNumber) {
+int recieveValidInput(int minNumber, int maxNumber, bool limpiarPantalla) {
     int num;
     bool validInput = false;
 
@@ -20,7 +20,11 @@ int recieveValidInput(int minNumber, int maxNumber) {
         }
         else {
             validInput = true;
-            system("cls");
+
+            if (limpiarPantalla)
+            {
+                system("cls");
+            }
         }
     }
 
