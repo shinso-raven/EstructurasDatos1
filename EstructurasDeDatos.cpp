@@ -1,7 +1,8 @@
 ﻿#include "Input.h"
-#include "Stack.h"
-#include "Queue.h"
-#include "LinkList.h"
+//#include "Stack.h"
+//#include "Queue.h"
+//k#include "LinkList.h"
+#include "binaryTree.h"
 
 using namespace std;
 
@@ -27,7 +28,14 @@ using namespace std;
 
 int main() {
 
-    int userSelection;
+
+    //>>>>>>>>>Prueba
+
+    EjecutarArbolBinario();
+
+    // >>>>>PRueba
+
+   /* int userSelection;
     bool exitProgram = false;
 
     while (!exitProgram) {
@@ -52,7 +60,7 @@ int main() {
         default:
             break;
         }
-    }
+    }*/
 
 
 

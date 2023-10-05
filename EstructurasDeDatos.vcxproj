@@ -130,10 +130,14 @@
     <ClCompile Include="EstructurasDeDatos.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="binaryTree.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="LinkList.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Quality Assurance.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
