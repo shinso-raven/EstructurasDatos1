@@ -134,6 +134,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="LinkList.h" />
     <ClInclude Include="Queue.h" />
+    <ClInclude Include="ReinaYtorres.h" />
     <ClInclude Include="Stack.h" />
   </ItemGroup>
   <ItemGroup>

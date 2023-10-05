@@ -3,6 +3,7 @@
 //#include "Queue.h"
 //k#include "LinkList.h"
 #include "binaryTree.h"
+#include "ReinaYtorres.h"
 
 using namespace std;
 
@@ -30,8 +31,8 @@ int main() {
 
 
     //>>>>>>>>>Prueba
-
-    EjecutarArbolBinario();
+    EjecutarReinaYTorres();
+   // EjecutarArbolBinario();
 
     // >>>>>PRueba
 
