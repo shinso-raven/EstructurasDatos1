@@ -41,23 +41,23 @@ void marcarMovimientoReina(int filaReina, int ColumnaReina, int movR, int movC, 
 	}
 	else {
 		posicion = tablero[filaReina][ColumnaReina];
-			if (posicion == 'n')
-			{
-				tablero[filaReina][ColumnaReina] = 'X';
-			}
-			else if (posicion == ' ') {
-				tablero[filaReina][ColumnaReina] = 'V';
-
-			}
-			else if (posicion == 'T')
-			{
-				validoMovimiento = false;
-			}
+		switch (posicion)
+		{
+		case 'n':
+			tablero[filaReina][ColumnaReina] = 'X';
+			break;
+		case ' ':
+			tablero[filaReina][ColumnaReina] = 'V';
+			break;
+		case 'T':
+			validoMovimiento = false;
+			break;
+		default:
+			break;
+		}
 	}
-
 	if (validoMovimiento == true)
 		marcarMovimientoReina(filaReina, ColumnaReina, movR, movC, tablero);
-
 }
 
 void movimientoReina(int filaReina, int columnaReina, char tablero[8][8]) {
@@ -80,7 +80,6 @@ void movimientoReina(int filaReina, int columnaReina, char tablero[8][8]) {
 }
 
 void marcarZonaTorre(char tablero[8][8], int filaTorre, int columnaTorre) {
-
 	for (int i = 0; i < 8; i++)
 	{
 		if (tablero[filaTorre][i] == ' ')
@@ -92,15 +91,14 @@ void marcarZonaTorre(char tablero[8][8], int filaTorre, int columnaTorre) {
 
 }
 
-char tablero[8][8];
 
 void EjecutarReinaYTorres() {
-	/* Pedir posicion individualmente
+	char tablero[8][8];
 
-		- hacer que tome numero y letra
+	int filaTorre1, columnaTorre1, filaTorre2, columnaTorre2, filaReina, columnaReina;
+	bool salir = false;
 
-	*/
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++)  // Inicializanddo tablero
 	{
 		for (int j = 0; j < 8; j++)
 		{
@@ -108,8 +106,6 @@ void EjecutarReinaYTorres() {
 		}
 	}
 
-	int filaTorre1, columnaTorre1, filaTorre2, columnaTorre2, filaReina, columnaReina;
-	bool salir = false;
 	while (!salir)
 	{
 		cout << "\nIngrese posicion de la torre 1:\n\tFila: "; filaTorre1 = recieveValidInput(1, 8, 0) - 1;
@@ -129,8 +125,7 @@ void EjecutarReinaYTorres() {
 			(filaReina == filaTorre1 && columnaReina == columnaTorre1) ||
 			(filaReina == filaTorre2 && columnaReina == columnaTorre2))
 		{
-			cout << "Posiciones ingresadas inválidas." << endl;
-
+			cout << "Posiciones ingresadas se superponen. Intente de nuevo..." << endl;
 		}
 		else
 		{
