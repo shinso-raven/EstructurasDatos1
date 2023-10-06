@@ -25,60 +25,69 @@ void mostrarTablero(char tablero[8][8]) {
 }
 
 // Función para marcar movimientos de la Reina
-void marcarMovimientoReina(int filaReina, int ColumnaReina, int afilaReina, int aColumnaReina, char tablero[8][8]) {
+void marcarMovimientoReina(int filaReina, int ColumnaReina, int movR, int movC, char tablero[8][8]) {
 
-	if (afilaReina > 7 || afilaReina < 0)
-	{
-		
-		return;
-	}
-	else if (aColumnaReina > 7 || aColumnaReina < 0)
-	{
-		
-		return;
+	bool validoMovimiento = true;
+	filaReina = filaReina + movR;
+	ColumnaReina = ColumnaReina + movC;
 
+	char posicion;
+
+	if (filaReina > 7 || filaReina < 0) {
+		validoMovimiento = false;
 	}
-	if (afilaReina == filaReina && aColumnaReina ==ColumnaReina)
-	{
-		tablero[afilaReina][aColumnaReina] = 'R';
+	else if (ColumnaReina > 7 || ColumnaReina < 0) {
+		validoMovimiento = false;
 	}
-	else
-	{
-		if (tablero[afilaReina][aColumnaReina] == 'n')
-		{
-			tablero[afilaReina][aColumnaReina] = 'X';
-		}
-		else if(tablero[afilaReina][aColumnaReina] ==' ')
-			tablero[afilaReina][aColumnaReina] = 'V';
+	else {
+		posicion = tablero[filaReina][ColumnaReina];
+			if (posicion == 'n')
+			{
+				tablero[filaReina][ColumnaReina] = 'X';
+			}
+			else if (posicion == ' ') {
+				tablero[filaReina][ColumnaReina] = 'V';
+
+			}
+			else if (posicion == 'T')
+			{
+				validoMovimiento = false;
+			}
 	}
+
+	if (validoMovimiento == true)
+		marcarMovimientoReina(filaReina, ColumnaReina, movR, movC, tablero);
+
 }
 
 void movimientoReina(int filaReina, int columnaReina, char tablero[8][8]) {
+	
+	tablero[filaReina][columnaReina] = 'R';
 	//Filas y columnas
-	for (int i = 0; i < 8; i++)
-	{
-		marcarMovimientoReina(filaReina, columnaReina, filaReina, i, tablero);
-		marcarMovimientoReina(filaReina, columnaReina, i,columnaReina  , tablero);
-	}
+	marcarMovimientoReina(filaReina, columnaReina, 1, 0, tablero);
+	marcarMovimientoReina(filaReina, columnaReina, -1,0, tablero);
+	marcarMovimientoReina(filaReina, columnaReina, 0, 1, tablero);
+	marcarMovimientoReina(filaReina, columnaReina, 0, -1, tablero);
 
 	//diagonales
-	for (int i = 1; i < 8; i++)
-	{
-		marcarMovimientoReina(filaReina, columnaReina, filaReina + i, columnaReina +i , tablero);
-		marcarMovimientoReina(filaReina, columnaReina, filaReina + i, columnaReina - i, tablero);
-		marcarMovimientoReina(filaReina, columnaReina, filaReina - i, columnaReina + i, tablero);
-		marcarMovimientoReina(filaReina, columnaReina, filaReina - i, columnaReina - i, tablero);
-	}
+	marcarMovimientoReina(filaReina, columnaReina, 1, 1, tablero);
+	marcarMovimientoReina(filaReina, columnaReina, 1, -1, tablero);
+	marcarMovimientoReina(filaReina, columnaReina, -1, 1, tablero);
+	marcarMovimientoReina(filaReina, columnaReina, -1, -1, tablero);
+
+
+	
 }
 
 void marcarZonaTorre(char tablero[8][8], int filaTorre, int columnaTorre) {
 
 	for (int i = 0; i < 8; i++)
 	{
-		tablero[filaTorre][i] = 'n';
-		tablero[i][columnaTorre] = 'n';
+		if (tablero[filaTorre][i] == ' ')
+			tablero[filaTorre][i] = 'n';
+		if (tablero[i][columnaTorre] == ' ')
+			tablero[i][columnaTorre] = 'n';
 	}
-
 	tablero[filaTorre][columnaTorre] = 'T';
 
 }
@@ -105,7 +114,7 @@ void EjecutarReinaYTorres() {
 	{
 		cout << "\nIngrese posicion de la torre 1:\n\tFila: "; filaTorre1 = recieveValidInput(1, 8, 0) - 1;
 		cout << "\tcolumna (A-H como 1-8): ";
-		columnaTorre1 = recieveValidInput(1,8, 0) - 1;
+		columnaTorre1 = recieveValidInput(1, 8, 0) - 1;
 
 		cout << "Ingrese posicion de la torre 2:\n\tFila: "; filaTorre2 = recieveValidInput(1, 8, 0) - 1;
 		cout << "\tcolumna (A-H como 1-8): ";
@@ -128,7 +137,7 @@ void EjecutarReinaYTorres() {
 			salir = true;
 		}
 	}
-	
+
 
 	marcarZonaTorre(tablero, filaTorre1, columnaTorre1);
 	marcarZonaTorre(tablero, filaTorre2, columnaTorre2);
