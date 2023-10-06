@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <vector>
 using namespace std;
 
 
@@ -105,15 +104,15 @@ void EjecutarReinaYTorres() {
 	while (!salir)
 	{
 		cout << "\nIngrese posicion de la torre 1:\n\tFila: "; filaTorre1 = recieveValidInput(1, 8, 0) - 1;
-		cout << "\tcolumna: ";
-		columnaTorre1 = recieveValidInput(65, 72, 0)-65;
+		cout << "\tcolumna (A-H como 1-8): ";
+		columnaTorre1 = recieveValidInput(1,8, 0) - 1;
 
 		cout << "Ingrese posicion de la torre 2:\n\tFila: "; filaTorre2 = recieveValidInput(1, 8, 0) - 1;
-		cout << "\tcolumna: ";
+		cout << "\tcolumna (A-H como 1-8): ";
 		columnaTorre2 = recieveValidInput(1, 8, 0) - 1;
 
 		cout << "Ingrese posicion de la reina:\n\tFila: "; filaReina = recieveValidInput(1, 8, 0) - 1;
-		cout << "\tcolumna: ";
+		cout << "\tcolumna (A-H como 1-8): ";
 		columnaReina = recieveValidInput(1, 8, 0) - 1;
 
 		// Verificar restricciones
@@ -129,14 +128,11 @@ void EjecutarReinaYTorres() {
 			salir = true;
 		}
 	}
+	
 
 	marcarZonaTorre(tablero, filaTorre1, columnaTorre1);
 	marcarZonaTorre(tablero, filaTorre2, columnaTorre2);
 	movimientoReina(filaReina, columnaReina, tablero);
-	
-
-
-
 	mostrarTablero(tablero);
 
 
